@@ -31,7 +31,7 @@ public class CustomRequestInterceptor extends HandlerInterceptorAdapter {
 //        HttpServletRequest requestCacheWrapperObject = new ContentCachingRequestWrapper(request);
         if("POST".equalsIgnoreCase(method)){
 //            final Map<String, String[]> parameterMap = requestCacheWrapperObject.getParameterMap();
-            body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+//            body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         }
 
         return true;

@@ -24,4 +24,28 @@ HttpServletRequest 에서 body를 가져오려고 할때, Exception 발생 (Nest
 
 Request body를 로깅하려고 할때는 다른 방법으로 해야 할듯함
 
+###  Spring Built-in Request Logging
+
+``` java
+@Configuration
+public class RequestLoggingFilterConfig {
+
+    @Bean
+    public CommonsRequestLoggingFilter loggingFilter(){
+        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+        filter.setIncludeQueryString(true);
+        filter.setIncludeClientInfo(true);
+        filter.setIncludePayload(true);
+//        filter.setMaxPayloadLength(10000);
+        filter.setIncludeHeaders(false);
+        filter.setAfterMessagePrefix("REQUEST DATA:");
+
+        return filter;
+    }
+
+}
+```
+
+    logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter=DEBUG
+    
 
